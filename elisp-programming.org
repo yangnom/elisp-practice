@@ -1,0 +1,45 @@
+#+TITLE: Elisp Programming
+
+
+* Programming exercises from [[https://adriann.github.io/programming_problems.html][here]]
+1. Write a program that prints ‘Hello World’ to the screen.
+#+begin_src elisp
+(message "Hello, World!")
+#+end_src
+2. Write a program that asks the user for their name and greets them with their name.
+   I lifted this directly from [[https://randomgeekery.org/post/2020/12/learning-a-little-elisp/][here]]
+#+begin_src elisp
+(message
+ (let
+     ((question "What's your name?")
+      (our-result "Hello, %s!"))
+   (format our-result
+           (read-string (format "%s " question)))))
+#+end_src
+
+#+RESULTS:
+: Hello, james!
+
+3. Modify the previous program such that only the users Alice and Bob are greeted with their names.
+   #+begin_src elisp
+(message
+ (let ((me "Me!")
+       (justAnotherString "another string")
+(inputName (read-string "What's your name?"))
+                )
+(if (or (equal inputName "Alice") (equal inputName "Bob"))
+    (message "Welcome %s" inputName)
+  (message "Buzz off, %s..." inputName))))
+   #+end_src
+
+   #+RESULTS:
+   : Buzz off, Skip...
+
+   #+begin_src elisp
+(if (> 4 5)                               ; if-part
+    (message "4 falsely greater than 5!") ; then-part
+  (message "4 is not greater than 5!"))   ; else-part
+   #+end_src
+
+   #+RESULTS:
+   : 4 is not greater than 5!
