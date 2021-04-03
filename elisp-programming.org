@@ -6,6 +6,10 @@
 #+begin_src elisp
 (message "Hello, World!")
 #+end_src
+
+#+RESULTS:
+: Hello, World!
+
 2. Write a program that asks the user for their name and greets them with their name.
    I lifted this directly from [[https://randomgeekery.org/post/2020/12/learning-a-little-elisp/][here]]
 #+begin_src elisp
@@ -35,11 +39,15 @@
    #+RESULTS:
    : Buzz off, Skip...
 
+4. Write a program that asks the user for a number n and prints the sum of the numbers 1 to n
+
    #+begin_src elisp
-(if (> 4 5)                               ; if-part
-    (message "4 falsely greater than 5!") ; then-part
-  (message "4 is not greater than 5!"))   ; else-part
+(defun sum-up-to (x)
+  "Sum of integers up to given number"
+  (interactive "nNumber to add up to: ")
+  (let ((numberRange (number-sequence 1 x) ))
+    (message "Sum is %d" (seq-reduce #'+ numberRange 0))))
    #+end_src
 
    #+RESULTS:
-   : 4 is not greater than 5!
+   : sum-up-to
